@@ -24,3 +24,6 @@ yarn-error.log*
 
 # backend
 /backend/node_modules
+
+# frontend
+/frontend/node_modules
