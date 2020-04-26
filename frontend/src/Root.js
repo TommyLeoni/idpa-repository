@@ -26,7 +26,7 @@ class Root extends Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route exact path="/" render={() => <HomePage test={this.test} />} />
+                        <Route exact path="/" render={() => <HomePage setResults={this.setResults} />} />
                         <Route path="/results" render={() => <ResultsPage results={this.state.results} />} />
                     </Switch>
                 </div>

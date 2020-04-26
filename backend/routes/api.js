@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
 
 router.post("/textUpload", (req, res, next) => {
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -27,7 +28,11 @@ router.post("/textUpload", (req, res, next) => {
             res.status(400).send("An error occurred while analyzing your text.");
         }
     } else {
-        res.status(200).send("Everything's alright bby")
+        console.log(req.files.files);
+        req.files.files.mv(__dirname + "/uploads/" + req.files.files.name, function(err) {
+            if (err) return res.status(400).send("couldn't move");
+            res.status(200).send("file moved");
+        })
     }
 });
 

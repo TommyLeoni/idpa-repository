@@ -18,11 +18,13 @@ function HomePage(props) {
     }, []);
 
     const handleSubmit = () => {
-        var formData = new FormData();
+        props.setResults(["nice bro danke alter", "kein thema brudi"]);
+        props.history.push('/results');
+        /*var formData = new FormData();
         formData.append("files")
         axios.post('http://localhost:3000/api/textUpload', {
 
-        })
+        })*/
     }
 
     return (
@@ -50,7 +52,7 @@ function HomePage(props) {
                     </Dropzone>
                 </div>
                 <div className="col-12">
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={handleSubmit}>
                         submit
                     </Button>
                 </div>
