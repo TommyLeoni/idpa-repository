@@ -3,8 +3,8 @@ const router = express.Router();
 
 router.post("/textUpload", (req, res, next) => {
     if (!req.files || Object.keys(req.files).length === 0) {
-
-    } if (req.body.agb != null) {
+        res.status(400).send("No content or file was sent.");
+    } else if (req.body.agb != null) {
         try {
             var hints = ['schaden', 'verbindlich', 'kosten', 'pflicht', 'haftung'];
             var agb = req.body.agb.split(/[?.!]/);
@@ -27,9 +27,8 @@ router.post("/textUpload", (req, res, next) => {
             res.status(400).send("An error occurred while analyzing your text.");
         }
     } else {
-        res.status(400).send("No content or file was sent.");
+        res.status(200).send("Everything's alright bby")
     }
-
 });
 
 module.exports = router;
