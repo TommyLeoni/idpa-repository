@@ -1,15 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
+import { withRouter } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import AddIcon from "@material-ui/icons/Add";
 import Dropzone from 'react-dropzone';
-import { withRouter } from "react-router-dom";
-import { Axios as axios } from "axios";
+import axios from "axios";
 import "./home.css";
 
 
 function HomePage(props) {
     const [textFile, setTextFile] = useState(0);
+    const [text, setText] = useState(0);
     const onDrop = useCallback(acceptedFiles => {
         if (acceptedFiles) {
             setTextFile(acceptedFiles[0]);
@@ -18,13 +19,12 @@ function HomePage(props) {
     }, []);
 
     const handleSubmit = () => {
-        props.setResults(["nice bro danke alter", "kein thema brudi"]);
-        props.history.push('/results');
-        /*var formData = new FormData();
-        formData.append("files")
-        axios.post('http://localhost:3000/api/textUpload', {
-
-        })*/
+        var formData = new FormData();
+        formData.append("files", textFile);
+        axios.post('http://localhost:5000/api/textUpload', formData).then(async (res) => {
+            await props.setResults(res.data);
+            props.history.push('/results');
+        });
     }
 
     return (
@@ -35,7 +35,7 @@ function HomePage(props) {
                     <small className="text-muted"><em>by Tomaso Leoni</em></small>
                 </div>
                 <div className="col-6 my-auto">
-                    <TextField id="outlined-basic" label="Paste the Terms and Conditions here ..." variant="outlined" fullWidth />
+                    <TextField id="outlined-basic" label="Paste the Terms and Conditions here ..." variant="outlined" onChange={(event) => setText(event.target.value)} fullWidth />
                     <Dropzone onDrop={onDrop} accept={"text/plain"} >
                         {({ getRootProps, getInputProps, isDragActive }) => (
                             <div

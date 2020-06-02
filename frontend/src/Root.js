@@ -18,7 +18,8 @@ class Root extends Component {
     setResults = (results) => {
         this.setState({
             results: results
-        })
+        });
+        console.log(this.state.results);
     }
 
     render() {
