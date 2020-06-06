@@ -3,7 +3,7 @@ import "./results.css";
 
 function ResultsPage(props) {
     const items = props.results;
-    const resultsList = items.map((d) => <ResultTile key={items.indexOf(d)} content={d.line} danger={d.danger} id={items.indexOf(d) + 1} />)
+    const resultsList = items.map((d) => <ResultTile key={items.indexOf(d)} content={d.text} danger={d.danger} id={items.indexOf(d) + 1} />)
 
     return (
         <div className="container" id="container">
