@@ -9,7 +9,7 @@ function ResultsPage(props) {
         <div className="container" id="container">
             <div className="row justify-content-center text-center h-100 m-0 p-0">
                 <div className="col-10 my-auto overflow-auto">
-                    <h1 className="font-weight-bold my-5 display-4">Your results</h1>
+                    <h1 className="font-weight-bold my-5 display-4">Ihre Resultate</h1>
                     {resultsList}
                 </div>
             </div>
