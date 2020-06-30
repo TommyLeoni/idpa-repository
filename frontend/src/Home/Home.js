@@ -19,7 +19,6 @@ const HomePage = (props) => {
   const onDrop = useCallback((acceptedFiles) => {
     if (acceptedFiles) {
       setTextFile(acceptedFiles[0]);
-      console.log(acceptedFiles[0]);
     }
   }, []);
 

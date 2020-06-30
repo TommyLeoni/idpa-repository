@@ -36,7 +36,7 @@ def text_file_upload():
             f = open(os.path.join("uploads", filename), "r", encoding="utf-8")
             file_content = f.read()
             results = analyze_text(file_content)
-            return jsonify(results)
+            return jsonify(results, file_content)
 
 
 @app.route('/api/textRawUpload', methods=['POST'])
@@ -44,7 +44,7 @@ def text_file_upload():
 def text_raw_upload():
     data = request.get_json()
     results = analyze_text(data['content'])
-    return jsonify(results)
+    return jsonify(results, data['content'])
 
 
 if __name__ == '__main__':

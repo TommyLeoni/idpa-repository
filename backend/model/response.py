@@ -2,7 +2,7 @@ class Response:
     text = "",
     danger = "",
     danger_value = "",
-    danger_obj = ""
+    danger_obj = []
 
     def __init__(self, text, danger, danger_value, danger_obj):
         self.text = text

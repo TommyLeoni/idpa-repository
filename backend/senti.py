@@ -30,7 +30,7 @@ def analyze_text(text):
                 if token._.sentiws < -0.3:
                     results.append({
                         "text": sentence.text,
-                        "danger": token.text,
+                        "danger": [token.text],
                         "danger_value": token._.sentiws,
                         "danger_obj": token.pos_
                     })
