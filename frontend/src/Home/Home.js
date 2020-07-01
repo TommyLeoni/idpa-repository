@@ -45,9 +45,9 @@ const HomePage = (props) => {
         });
     } else {
       alert.error(
-        "Please make sure to either insert your Terms and Conditions into the textfield or add the file with the content you would like to be analyzed.",
+        "Bitte versichern Sie sich den Text in einer der beiden Form angegeben zu haben und versuchen Sie gerne erneut.",
         {
-          title: "No text or file was found",
+          title: "Es ist weder Text noch eine Text-Datei vorhanden",
         }
       );
     }
@@ -96,7 +96,7 @@ const HomePage = (props) => {
           </Dropzone>
         </div>
         <div className="col-12">
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
+          <Button variant="contained" color="secondary" onClick={handleSubmit}>
             absenden
           </Button>
           <LoadingModal show={showModal} />
