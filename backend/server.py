@@ -7,7 +7,8 @@ from senti import analyze_text
 from model.response_encoder import ResponseEncoder
 
 SECRET_KEY = os.urandom(24)
-UPLOAD_FOLDER = r"C:\Users\tomas\Documents\Development\IDPA\idpa-repository\backend\uploads"
+LOCAL_PATH = os.path.abspath(os.path.dirname(__file__))
+UPLOAD_FOLDER = r"/Users/Tommy/development/IDPA/idpa-repository/backend/uploads"
 ALLOWED_EXTENSION = {'txt'}
 
 app = Flask(__name__)
@@ -32,7 +33,7 @@ def text_file_upload():
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(LOCAL_PATH, filename))
             f = open(os.path.join("uploads", filename), "r", encoding="utf-8")
             file_content = f.read()
             results = analyze_text(file_content)
